@@ -11,3 +11,5 @@ if (isset($_GET) && !empty($_GET['id'])) {
     echo "No customer selected";
     exit();
 }
+
+echo "hello";
