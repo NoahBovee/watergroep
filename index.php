@@ -15,7 +15,8 @@ if (isset($_POST["id"])) {
         "nummerbus" => $_POST["nummerbus"],
         "postcode" => $_POST["postcode"],
         "locatie" => $_POST["locatie"],
-        "id" => $_POST["id"],
+        "meterstand" => $_POST["meterstand"],
+
 
     );
 }
