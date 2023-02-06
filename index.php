@@ -1,18 +1,29 @@
 <?php
 require "./db.php";
+require "./functions.php";
 
-if (isset($_GET) && !empty($_GET['id'])) {
-    $customer = getCustomer($_GET['id']);
-    if (!$customer) {
-        echo "No records found";
-        exit();
-    }
-} else {
-    echo "No customer selected";
-    exit();
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
+error_reporting(E_ALL);
+var_dump($_POST);
+
+if (isset($_POST["id"])) {
+    $form = array(
+        "voornaam" => $_POST["voornaam"],
+        "naam" => $_POST["naam"],
+        "straatnaam" => $_POST["straatnaam"],
+        "nummerbus" => $_POST["nummerbus"],
+        "postcode" => $_POST["postcode"],
+        "locatie" => $_POST["locatie"],
+        "id" => $_POST["id"],
+
+    );
 }
 
-$id = $_GET['id'];
+if (isset($_GET["id"])) {
+    $values = getDbInfo($_GET["id"])[0];
+}
+
 
 ?>
 
@@ -30,19 +41,22 @@ $id = $_GET['id'];
 
 <body>
 
-    <h1>Welkom <?= $customer["voornaam"] ?></h1>
 
+    <div class="container">
+        <form action="<?= $_GET["id"] ?>" method="POST">
+            <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
+            <input type="text" name="voornaam" value="<?= $_GET["voornaam"] ?>">
+            <input type="text" name="naam" value="<?= $_GET["naam"] ?>">
+            <input type="text" name="straatnaam" value="<?= $_GET["straatnaam"] ?>">
+            <input type="text" name="nummerbus" value="<?= $_GET["nummerbus"] ?>">
+            <input type="text" name="postcode" value="<?= $_GET["postcode"] ?>">
+            <input type="text" name="locatie" value="<?= $_GET["locatie"] ?>">
+            <input type="text" name="created_at" value="<?= $_GET["created_at"] ?>">
+            <input type="text" name="updated_at" value="<?= $_GET["updated_at"] ?>">
+            <button type="submit">verzenden</button>
+        </form>
+    </div>
 
-    <form class="form" action="" method="POST">
-        <div class="formel"><label for="firstName">Voornaam: </label><input type="text" name="firstName" value="<?= $customer["voornaam"] ?>" disabled /></div>
-        <div class="formel"><label for="lastName">Naam: </label><input type="text" name="Name" value="<?= $customer["naam"] ?>" disabled /></div>
-        <div class="formel"><label for="street">Straat: </label><input type="text" name="street" value="<?= $customer["straatnaam"] ?>" disabled /></div>
-        <div class="formel"><label for="number">Nummerbus: </label><input type="text" name="houseNumber" value="<?= $customer["nummerbus"] ?>" disabled /></div>
-        <div class="formel"><label for="zip">Postcode: </label><input type="text" name="zip" value="<?= $customer["postcode"] ?>" disabled /></div>
-        <div class="formel"><label for="city">Locatie: </label><input type="text" name="location" value="<?= $customer["locatie"] ?>" disabled /></div>
-        <div class="formel"><label for="currentMeter">Huidige meterstand: </label><input type="text" name="currentMeter" min="0" max="999999" /></div>
-        <input type="submit" value="Submit" />
-    </form>
 
 </body>
 
