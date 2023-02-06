@@ -1,7 +1,7 @@
 <?php
 
 
-function getDbInfo()
+function getData()
 {
     global $pdo;
 

@@ -21,7 +21,7 @@ if (isset($_POST["id"])) {
 }
 
 if (isset($_GET["id"])) {
-    $values = getDbInfo($_GET["id"])[0];
+    $values = getData($_GET["id"])[0];
 }
 
 
