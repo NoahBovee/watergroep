@@ -19,6 +19,8 @@ if (isset($_POST["id"])) {
 
 
     );
+} elseif (!isset($_GET["id"]) && !isset($_GET["error"])) {
+    header("location: index.php?error");
 }
 
 if (isset($_GET["id"])) {
@@ -52,8 +54,7 @@ if (isset($_GET["id"])) {
             <input type="text" name="nummerbus" value="<?= $_GET["nummerbus"] ?>">
             <input type="text" name="postcode" value="<?= $_GET["postcode"] ?>">
             <input type="text" name="locatie" value="<?= $_GET["locatie"] ?>">
-            <input type="text" name="created_at" value="<?= $_GET["created_at"] ?>">
-            <input type="text" name="updated_at" value="<?= $_GET["updated_at"] ?>">
+            <input type="text" name="meterstand" value="<?= $_GET["meterstand"] ?>">
             <button type="submit">verzenden</button>
         </form>
     </div>
