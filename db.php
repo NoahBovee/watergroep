@@ -3,7 +3,7 @@
 $db_host = '127.0.0.1';
 $db_user = 'root';
 $db_password = 'root';
-$db_db = 'functioneelprogrammeren';
+$db_db = 'watergroep';
 $db_port = 8889;
 
 try {
